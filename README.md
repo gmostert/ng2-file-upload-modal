@@ -6,10 +6,13 @@ Even though the ng2-file-upload supports multiple files, this component is desig
 
 ## Install
 
-Install all the dependencies:
+Install dependencies:
 
     npm install --save ng2-bs3-modal
-    npm install --ng2-file-upload
+    npm install --save ng2-file-upload
+    
+Install app:
+
     npm install --save ng2-file-upload-modal
 
 ## Usage
