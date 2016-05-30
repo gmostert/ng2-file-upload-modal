@@ -1,0 +1,11 @@
+.idea
+src/**/*.js
+src/**/*.d.ts
+ng2-file-upload-modal.js
+ng2-file-upload-modal.d.ts
+bundles
+build
+dist
+node_modules
+npm-debug.log
+typings

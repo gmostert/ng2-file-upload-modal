@@ -1,0 +1,6 @@
+.idea
+.npmignore
+*.html
+*.log
+node_modules
+typings

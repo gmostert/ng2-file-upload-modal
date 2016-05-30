@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>ng2-file-upload-modal</title>
+
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.js"></script>
+        <script src="/node_modules/systemjs/dist/system.js"></script>
+
+        <script>
+            var ngVer = '@2.0.0-rc.1'; // lock in the angular package version
+
+            // map tells the System loader where to look for things
+            var  map = {
+                '@angular': 'https://npmcdn.com/@angular',
+                'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
+                'rxjs': 'https://npmcdn.com/rxjs@5.0.0-beta.6',
+                'ng2-bs3-modal': 'node_modules/ng2-bs3-modal',
+                'ng2-file-upload': 'node_modules/ng2-file-upload'
+            };
+
+            // packages tells the System loader how to load when no filename and/or no extension
+            var packages = {
+                'rxjs': { defaultExtension: 'js' },
+                'angular2-in-memory-web-api': { defaultExtension: 'js' },
+                'ng2-bs3-modal': { defaultExtension: 'js' },
+                'ng2-file-upload': { defaultExtension: 'js' }
+            };
+
+            // List of angular package names to load
+            var ngPackageNames = [
+                'common',
+                'compiler',
+                'core',
+                'http',
+                'platform-browser',
+                'platform-browser-dynamic',
+                'upgrade'
+            ];
+
+            // Add map entries for each angular package
+            // only because we're pinning the version with `ngVer`.
+            ngPackageNames.forEach(function(pkgName) {
+                map['@angular/'+pkgName] = 'https://npmcdn.com/@angular/' + pkgName + ngVer;
+            });
+
+            // Add package entries for angular packages
+            ngPackageNames.forEach(function(pkgName) {
+                // Bundled (~40 requests):
+                packages['@angular/'+pkgName] = { main: pkgName + '.umd.js', defaultExtension: 'js' };
+            });
+
+            var config = {
+                app: {
+                    format: 'register',
+                    defaultExtension: 'js'
+                },
+                map: map,
+                packages: packages
+            }
+
+            System.config(config);
+        </script>
+
+        <script src="node_modules/es6-shim/es6-shim.js"></script>
+        <script src="node_modules/zone.js/dist/zone.js"></script>
+        <script src="node_modules/reflect-metadata/Reflect.js"></script>
+
+        <script>
+            //bootstrap the Angular2 application
+            System.import('src/main.js').catch(console.log.bind(console));
+        </script>
+
+    </head>
+
+    <body>
+        <app>Loading...</app>
+    </body>
+
+</html>
